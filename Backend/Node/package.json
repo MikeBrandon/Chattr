@@ -1,0 +1,21 @@
+{
+  "name": "chatrr-backend-node",
+  "version": "1.0.0",
+  "author": "Mike Brandon",
+  "license": "MIT",
+  "main": "index.ts",
+  "scripts": {
+    "start": "nodemon index.ts"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.2",
+    "nodemon": "^2.0.18",
+    "socket.io": "^4.5.1",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
+  }
+}
