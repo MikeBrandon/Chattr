@@ -1,4 +1,4 @@
-# Chatrr
+# 🗣Chatrr
 
 Chatrr is a cross platform social media app mainly for my personal practice but is a bit extra ambitious. This repo is a monorepo that should contain everything required to run the project. It is divided into the following folders.
 - Backend => Contains the backend for the project
