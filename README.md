@@ -13,17 +13,16 @@ Chatrr is a cross platform social media app mainly for my personal practice but 
 - Firebase - Authentication
 
 ## Project Setup
+### Installation
+Run `pnpm -r i` in your terminal to install dependencies.
 ### Backend/Node
 This runs the backend for the project which must be running to build the project.
-
-1. Make a copy of the example.env file and name it .env and replace its values with your values.
+Make a copy of the example.env file and name it .env and replace its values with your values.
     - PORT => Port which you want the server to run on. Could be any port except 3000 which the sveltekit frontend runs on.
     - MONGO_URL => Your link for your MongoDB database.
-2. Run `npm i` in your terminal to install dependencies.
-3. Run `npm start` to run the server locally with nodemon on the PORT you defined.
-
 ### Frontends/Web
 This frontend is build on sveltekit and runs on default port 3000.
-
-1. Run `npm i` in your terminal to install dependencies.
-2. Run `npm run dev` to run the frontend on port 3000.
+Make a copy of the example.env file and name it .env and replace its values with your values.
+    - H_CAPTCHA_KEY => hCaptcha SiteKey for the project.
+### Running the Project
+Run `pnpm -r run start` to run the frontend on port 3000 and the server locally with nodemon on the PORT you defined.
