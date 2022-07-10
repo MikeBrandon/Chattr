@@ -1,6 +1,6 @@
 import { toast } from '@zerodevx/svelte-toast';
 
-export const successToast = (m: string, options = {}) => toast.push(m, {
+export const successToast = (m: string) => toast.push(m, {
   theme: {
     '--toastBackground': '#7EC832',
     '--toastColor': 'white',
