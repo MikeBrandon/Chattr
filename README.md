@@ -23,6 +23,6 @@ Make a copy of the example.env file and name it .env and replace its values with
 ### Frontends/Web
 This frontend is build on sveltekit and runs on default port 3000.
 Make a copy of the example.env file and name it .env and replace its values with your values.
-    - H_CAPTCHA_KEY => hCaptcha SiteKey for the project.
+    `no data here yet`
 ### Running the Project
 Run `pnpm -r run start` to run the frontend on port 3000 and the server locally with nodemon on the PORT you defined.
