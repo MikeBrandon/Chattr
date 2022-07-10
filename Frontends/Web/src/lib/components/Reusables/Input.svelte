@@ -1,8 +1,18 @@
 <script lang='ts'>
     export let value = '';
+    export let placeholder = '';
+
+    export let email = false;
+    export let password = false;
 </script>
 
-<input type="text" bind:value>
+{#if email}
+    <input type="email" bind:value {placeholder}>
+{:else if password}
+    <input type="password" bind:value {placeholder}>
+{:else}
+    <input type="text" bind:value {placeholder}>
+{/if}
 
 <style lang='postcss'>
     input {
