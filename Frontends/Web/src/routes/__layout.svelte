@@ -7,6 +7,12 @@
     }
 </script>
 
+<svelte:head>
+    <title>
+        Chatrr
+    </title>
+</svelte:head>
+
 <main>
     <SvelteToast {options} />
     <NavBar />

@@ -10,5 +10,6 @@
     .page-center {
         @apply flex;
         @apply h-full;
+        @apply p-[16px];
     }
 </style>
