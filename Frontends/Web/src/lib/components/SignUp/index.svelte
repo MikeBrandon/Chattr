@@ -17,6 +17,20 @@
         data: '',
         isValid: false
     };
+
+    const handleSignUp = () => {
+        data = validateSignUp({
+            username,
+            password,
+            email,
+            confirmPassword
+        });
+        if (!data.isValid) {
+            return;
+        }
+        //Submit Data
+        console.log(data);
+    }
 </script>
 
 <div class="sign-up">
@@ -48,19 +62,7 @@
     </div>
     <div class="gap"/>
     <div class="buttons">
-        <Button on:click={() => {
-            data = validateSignUp({
-                username,
-                password,
-                email,
-                confirmPassword
-            });
-            if (!data.isValid) {
-                return;
-            }
-            //Submit Data
-            console.log(data);
-        }}>
+        <Button on:click={handleSignUp}>
             Sign Up
         </Button>
         <Button dark>
