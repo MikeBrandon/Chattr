@@ -36,9 +36,6 @@
             <Input bind:value={confirmPassword}/>
         </div>
     </div>
-    <div class="hcaptcha">
-        <!-- hcaptcha goes here -->
-    </div>
     <div class="buttons">
         <Button>
             Sign Up
