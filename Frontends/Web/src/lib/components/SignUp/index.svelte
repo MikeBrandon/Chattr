@@ -36,6 +36,7 @@
             <Input bind:value={confirmPassword}/>
         </div>
     </div>
+    <div class="gap"/>
     <div class="buttons">
         <Button>
             Sign Up
@@ -72,7 +73,7 @@
         @apply flex flex-col gap-[clamp(12px,1.11vw,1.11vw)];
     }
 
-    .hcaptcha {
+    .gap {
         @apply my-[2vh] md:my-[1.67vw];
     }
 
