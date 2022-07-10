@@ -15,6 +15,6 @@
 
 <style windi:preflights:global windi:safelist:global lang='postcss'>
     main {
-        @apply h-screen bg-color-app-background;
+        @apply h-screen bg-color-app-background-1;
     }
 </style>
