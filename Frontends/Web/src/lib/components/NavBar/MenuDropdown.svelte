@@ -1,9 +1,11 @@
 <script lang='ts'>
     import MenuIcon from "$icons/MenuIcon.svelte";
+    import type { NavLink } from "src/utils/types";
     import { slide } from 'svelte/transition';
+    import { page } from '$app/stores';
 
-    let droppedDown: boolean=false;
-
+    let droppedDown: boolean = false;
+    export let links: NavLink[] = [];
 </script>
 
 <div class="menu-dropdown">
@@ -15,10 +17,11 @@
     {#if droppedDown}
         <div class="dropdown-holder">
             <div class="dropdown" transition:slide>
-                <div>Home</div>
-                <div>SignUp</div>
-                <div>LogIn</div>
-                <div>Docs</div>
+                {#each links as link}
+                    <a href={link.href} class:selected={$page.url.pathname === link.href} on:click={() => {
+                        droppedDown = false;
+                    }}>{link.text}</a>
+                {/each}
             </div>
         </div>
     {/if}
@@ -36,15 +39,22 @@
 
     .dropdown {
         @apply bg-[#262930] rounded-[16px] p-1 w-[30vw] text-center z-10 absolute;
+        @apply flex flex-col items-center;
     }
-    .dropdown>div:hover {
-        @apply text-[#FF914D];
+
+    .dropdown > a:hover {
+        @apply text-color-app-color;
     }
-    .dropdown>div {
+
+    .dropdown > a {
         @apply text-white cursor-pointer mb-1;
     }
 
     .icon {
         @apply mx-auto mb-1;
+    }
+
+    a.selected {
+        @apply text-color-app-color;
     }
 </style>
