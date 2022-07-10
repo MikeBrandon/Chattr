@@ -1,12 +1,22 @@
 <script lang='ts'>
     import GoogleLogo from "$lib/icons/GoogleLogo.svelte";
+    import { validateSignUp } from "../../../utils/validation";
     import Button from "../Reusables/Button.svelte";
     import Input from "../Reusables/Input.svelte";
+    import type { SignUpData } from "../../../utils/types";
 
     let username = '';
     let email = '';
     let password = '';
     let confirmPassword = '';
+
+    let data: {
+        data: SignUpData | string;
+        isValid: boolean;
+    } = {
+        data: '',
+        isValid: false
+    };
 </script>
 
 <div class="sign-up">
@@ -21,24 +31,36 @@
             <div class="label">
                 Email
             </div>
-            <Input bind:value={email}/>
+            <Input bind:value={email} email/>
         </div>
         <div class="input-wrapper">
             <div class="label">
                 Password
             </div>
-            <Input bind:value={password}/>
+            <Input bind:value={password} password placeholder="Password length must be atleast 8 characters"/>
         </div>
         <div class="input-wrapper">
             <div class="label">
                 Confirm Password
             </div>
-            <Input bind:value={confirmPassword}/>
+            <Input bind:value={confirmPassword} password placeholder="Password length must be atleast 8 characters"/>
         </div>
     </div>
     <div class="gap"/>
     <div class="buttons">
-        <Button>
+        <Button on:click={() => {
+            data = validateSignUp({
+                username,
+                password,
+                email,
+                confirmPassword
+            });
+            if (!data.isValid) {
+                return;
+            }
+            //Submit Data
+            console.log(data);
+        }}>
             Sign Up
         </Button>
         <Button dark>

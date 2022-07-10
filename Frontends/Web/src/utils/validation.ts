@@ -1,3 +1,4 @@
+import { failureToast } from "./toastManager";
 import type { SignUpData } from "./types";
 
 export const validateSignUp = (data: SignUpData): {
@@ -5,29 +6,37 @@ export const validateSignUp = (data: SignUpData): {
     isValid: boolean
 } => {
     if (!data.username || !data.email || !data.password || !data.confirmPassword) {
+        const message = "Please Fill in all fields";
+        failureToast(message);
         return {
-            data: "Please Fill in all fields",
+            data: message,
             isValid: false
         };
     }
 
     if (data.password !== data.confirmPassword) {
+        const message = "Passwords do not match";
+        failureToast(message);
         return {
-            data: "Passwords do not match",
+            data: message,
             isValid: false
         };
     }
 
     if (!validateEmail(data.email)) {
+        const message = "Please Enter a Valid Email";
+        failureToast(message);
         return {
-            data: "Please Enter a Valid Email",
+            data: message,
             isValid: false
         };
     }
 
     if (data.password.length <= 8) {
+        const message = `Password length must be at least 8 characters`;
+        failureToast(message);
         return {
-            data: `Password length must be atleast 8 characters`,
+            data: message,
             isValid: false
         };
     }
