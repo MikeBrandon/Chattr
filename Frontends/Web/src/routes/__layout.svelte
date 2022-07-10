@@ -10,3 +10,6 @@
     <SvelteToast {options} />
     <slot />
 </main>
+
+<style windi:preflights:global windi:safelist:global>
+</style>
