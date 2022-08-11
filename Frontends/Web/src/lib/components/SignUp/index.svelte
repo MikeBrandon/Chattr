@@ -32,6 +32,7 @@
 		}
 		const response: RegisterResponse = await registerUser(data.data);
 		localStorage.setItem('auth_token', response.auth_token);
+        goto('/app');
 	};
 </script>
 
@@ -78,7 +79,7 @@
 	<div
 		class="extra"
 		on:click={() => {
-			goto('login');
+			goto('/login');
 		}}
 	>
 		Already a user? Log in

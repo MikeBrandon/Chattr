@@ -16,6 +16,7 @@
 		};
 		const response: LogInResponse = await logInUser(data);
 		localStorage.setItem('auth_token', response.auth_token);
+        goto('/app');
 	};
 </script>
 
@@ -50,7 +51,7 @@
 	<div
 		class="extra"
 		on:click={() => {
-			goto('signup');
+			goto('/signup');
 		}}
 	>
 		New here? Create an account
@@ -59,7 +60,7 @@
 	<div
 		class="extra"
 		on:click={() => {
-			goto('password-reset');
+			goto('/password-reset');
 		}}
 	>
 		Forgot Password?
