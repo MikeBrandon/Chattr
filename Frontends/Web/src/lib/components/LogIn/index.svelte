@@ -6,9 +6,12 @@
 	import { logInUser } from '../../../utils/api/auth';
 	import { goto } from '$app/navigation';
 	import { failureToast } from '../../../utils/toastManager';
+	import { AUTH_TOKEN, updateAuth } from '../../../utils/stores/auth';
 
 	let email = '';
 	let password = '';
+
+	$AUTH_TOKEN.length > 0 && goto('/app');
 
 	const handleLogIn = async () => {
 		if (email.length === 0 || password.length === 0) {
@@ -20,8 +23,8 @@
 			password
 		};
 		const response: LogInResponse = await logInUser(data);
-		response && response.auth_token && localStorage.setItem('auth_token', response.auth_token);
-		goto('/app');
+		response && response.auth_token && updateAuth(response.auth_token);
+		$AUTH_TOKEN && goto('/app');
 	};
 </script>
 

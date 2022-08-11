@@ -6,11 +6,14 @@
 	import type { RegisterResponse, SignUpData } from '../../../utils/types';
 	import { registerUser } from '../../../utils/api/auth';
 	import { goto } from '$app/navigation';
+    import { AUTH_TOKEN, updateAuth } from '../../../utils/stores/auth';
 
 	let username = '';
 	let email = '';
 	let password = '';
 	let confirmPassword = '';
+
+    $AUTH_TOKEN.length > 0 && goto('/app');
 
 	let data: {
 		data: SignUpData | string;
@@ -31,8 +34,8 @@
 			return;
 		}
 		const response: RegisterResponse = await registerUser(data.data);
-		response && response.auth_token && localStorage.setItem('auth_token', response.auth_token);
-        goto('/app');
+		response && response.auth_token && updateAuth(response.auth_token);
+        $AUTH_TOKEN && goto('/app');
 	};
 </script>
 
