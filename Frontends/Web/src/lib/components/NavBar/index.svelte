@@ -5,7 +5,8 @@
 	import MenuDropdown from './MenuDropdown.svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-    import { AUTH_TOKEN, updateAuth } from '../../../utils/stores/auth';
+	import { AUTH_TOKEN, updateAuth } from '../../../utils/stores/auth';
+	import { successToast } from '../../../utils/toastManager';
 
 	let links: NavLink[];
 
@@ -65,7 +66,8 @@
 				<span
 					class="link"
 					on:click={() => {
-                        updateAuth();
+						updateAuth();
+						successToast('Signed Out');
 						goto('/');
 					}}
 				>
