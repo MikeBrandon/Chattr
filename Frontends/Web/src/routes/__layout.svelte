@@ -1,12 +1,26 @@
-<script>
+<script lang="ts">
 	import { SvelteToast } from '@zerodevx/svelte-toast';
 	import NavBar from '$lib/components/NavBar/index.svelte';
 	import { browser } from '$app/env';
-    import { AUTH_TOKEN } from '../utils/stores/auth';
+	import { AUTH_TOKEN, updateAuth } from '../utils/stores/auth';
+	import type { LogInResponse } from '../utils/types';
+	import { validateToken } from '../utils/api/auth';
+	import { goto } from '$app/navigation';
 
+	let token = '';
 	if (browser) {
-		$AUTH_TOKEN = localStorage.getItem('auth_token') || '';
+		token = localStorage.getItem('auth_token') || '';
 	}
+
+	export const autoLogin = async () => {
+		if (token.length > 0) {
+			const response: LogInResponse = await validateToken(token);
+			response && response.auth_token && updateAuth(response.auth_token);
+			$AUTH_TOKEN && goto('/app');
+		}
+	};
+
+	autoLogin();
 
 	const options = {
 		pausable: true
