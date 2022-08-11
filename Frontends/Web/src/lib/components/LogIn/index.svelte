@@ -5,18 +5,23 @@
 	import type { LogInData, LogInResponse } from '../../../utils/types';
 	import { logInUser } from '../../../utils/api/auth';
 	import { goto } from '$app/navigation';
+	import { failureToast } from '../../../utils/toastManager';
 
 	let email = '';
 	let password = '';
 
 	const handleLogIn = async () => {
+		if (email.length === 0 || password.length === 0) {
+			failureToast('Email and Password are Required');
+			return;
+		}
 		const data: LogInData = {
 			email,
 			password
 		};
 		const response: LogInResponse = await logInUser(data);
-		localStorage.setItem('auth_token', response.auth_token);
-        goto('/app');
+		response && response.auth_token && localStorage.setItem('auth_token', response.auth_token);
+		goto('/app');
 	};
 </script>
 
@@ -37,7 +42,7 @@
 	</div>
 	<div class="gap" />
 	<div class="buttons">
-		<Button on:click={handleLogIn}>Sign Up</Button>
+		<Button on:click={handleLogIn}>Log In</Button>
 		<Button dark>
 			<div class="google">
 				<div class="text">Sign In with</div>

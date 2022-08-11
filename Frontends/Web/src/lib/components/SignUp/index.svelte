@@ -31,7 +31,7 @@
 			return;
 		}
 		const response: RegisterResponse = await registerUser(data.data);
-		localStorage.setItem('auth_token', response.auth_token);
+		response && response.auth_token && localStorage.setItem('auth_token', response.auth_token);
         goto('/app');
 	};
 </script>
