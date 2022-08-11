@@ -146,3 +146,24 @@ export const redirect = async (req: any, res: any, next: any) => {
     next(error);
   }
 };
+
+export const verifyRoute = async (req: any, res: any, next: any) => {
+  try {
+    var auth_token = jwt.sign(
+      {
+        uid: req.user.uid,
+        email: req.user.email,
+        username: req.user.username,
+      },
+      process.env.JWT_KEY,
+      {
+        expiresIn: "2h",
+      }
+    );
+    return res
+      .status(200)
+      .json({ msg: "User Logged In Successfully", auth_token });
+  } catch (error) {
+    next(error);
+  }
+};

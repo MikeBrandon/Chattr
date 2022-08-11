@@ -51,3 +51,19 @@ export const redirectResetPassword = async (token: string) => {
 			failureToast(err.response.data.msg);
 		});
 };
+
+export const validateToken = async (token: string) => {
+	return await axios
+		.get(`${APIURL}/api/auth/verify`, {
+			params: {
+				token
+			}
+		})
+		.then((res) => {
+			successToast(res.data.msg);
+			return res.data;
+		})
+		.catch((err) => {
+			failureToast(err.response.data.msg);
+		});
+};

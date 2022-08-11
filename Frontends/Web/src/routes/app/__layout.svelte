@@ -1,8 +1,7 @@
 <script>
-	import { goto } from '$app/navigation';
 	import { AUTH_TOKEN } from '../../utils/stores/auth';
-
-	if ($AUTH_TOKEN === '') {
-		goto('signup');
-	}
 </script>
+
+{#if $AUTH_TOKEN === ''}
+	Please Log In to use the App
+{/if}
