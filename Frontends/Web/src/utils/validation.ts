@@ -23,6 +23,15 @@ export const validateSignUp = (data: SignUpData): {
         };
     }
 
+    if (data.username.length > 20) {
+        const message = "Username should not be longer than 20 characters";
+        failureToast(message);
+        return {
+            data: message,
+            isValid: false
+        };
+    }
+
     if (!validateEmail(data.email)) {
         const message = "Please Enter a Valid Email";
         failureToast(message);
