@@ -20,7 +20,12 @@ This runs the backend for the project which must be running to build the project
 Make a copy of the example.env file and name it .env and replace its values with your values.
 - PORT => Port which you want the server to run on. Could be any port except 3000 which the sveltekit frontend runs on.
 - MONGO_URL => Your link for your MongoDB database.
-- JWT_KEY => Your Secret key for generating and decrypting JWT tokens.
+- JWT_KEY => Your Secret key for generating and decrypting user JWT tokens.
+- JWT_RESET_KEY => Your Secret key for generating and decrypting reset links.
+- MAILER => Email address from which mails are sent.
+- MAILER_PASS => Mailer Password.
+- MAILER_SERVICE => Email Service Provider.
+- BASE_URL => URL for frontend.
 ### Frontends/Web
 This frontend is build on sveltekit and runs on default port 3000.
 Make a copy of the example.env file and name it .env and replace its values with your values.
