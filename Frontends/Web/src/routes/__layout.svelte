@@ -16,11 +16,18 @@
 <main>
     <SvelteToast {options} />
     <NavBar />
-    <slot />
+    <div class="slot">
+        <slot />
+    </div>
 </main>
 
 <style windi:preflights:global windi:safelist:global lang='postcss'>
     main {
         @apply h-screen bg-color-app-background-1;
+        @apply flex flex-col;
+    }
+
+    .slot {
+        @apply flex-grow;
     }
 </style>
