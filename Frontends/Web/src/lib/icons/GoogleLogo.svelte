@@ -1,0 +1,1 @@
+<img src="/images/png/google.png" class='h-full w-full' alt="google-logo">

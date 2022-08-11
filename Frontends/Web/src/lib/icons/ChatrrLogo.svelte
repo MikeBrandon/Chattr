@@ -1,0 +1,1 @@
+<img src="/images/png/chatrr_logo_transparent.png" class='h-full w-full' alt="chatrr-logo">

@@ -1,2 +1,0 @@
-primary - ff914d
-primary 2 - ffe400
