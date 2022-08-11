@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 import { UserModel } from "../model/UserModel";
-import { SignUpData } from "../Types/authTypes";
+import { LogInData, SignUpData } from "../Types/authTypes";
 
 export const register = async (req: any, res: any, next: any) => {
   try {
@@ -36,6 +36,40 @@ export const register = async (req: any, res: any, next: any) => {
       }
     );
     return res.status(200).json({ msg: "User created", auth_token });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const logIn = async (req: any, res: any, next: any) => {
+  try {
+    const logInData: LogInData = req.body;
+
+    const user = await UserModel.findOne({
+      email: logInData.email,
+    });
+    if (!user)
+      return res.status(400).json({ msg: "Incorrect Username or Password" });
+
+    const passwordValid = await bcrypt.compare(
+      logInData.password,
+      user.password
+    );
+    if (!passwordValid)
+      return res.status(400).json({ msg: "Incorrect Username or Password" });
+
+    var auth_token = jwt.sign(
+      {
+        uid: user._id,
+        email: user.email,
+        username: user.username,
+      },
+      process.env.JWT_KEY,
+      {
+        expiresIn: "2h",
+      }
+    );
+    return res.status(200).json({ msg: "User Logged In Successfully", auth_token });
   } catch (error) {
     next(error);
   }
