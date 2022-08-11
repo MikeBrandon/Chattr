@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 
-
 export const verifyResetToken = (req: any, res: any, next: any) => {
   const token =
     req.body.token || req.query.token || req.headers["x-access-token"];
