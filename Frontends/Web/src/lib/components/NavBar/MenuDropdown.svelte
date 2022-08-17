@@ -38,7 +38,7 @@
     }
 
     .dropdown {
-        @apply bg-[#262930] rounded-[16px] p-1 w-[30vw] text-center z-10 absolute;
+        @apply bg-color-app-background-3 rounded-[16px] p-1 w-[30vw] text-center z-10 absolute;
         @apply flex flex-col items-center;
     }
 

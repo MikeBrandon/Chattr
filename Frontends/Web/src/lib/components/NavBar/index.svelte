@@ -85,7 +85,7 @@
 	.nav-bar {
 		@apply h-[6vh] md:h-[6vw];
 		@apply p-[1.5vh] md:p-[1.1vw];
-		@apply bg-gradient-to-t from-[#191A1E] to-[#262930];
+		@apply bg-gradient-to-t from-color-app-background-2 to-color-app-background-3;
 		@apply flex justify-between items-center;
 	}
 
